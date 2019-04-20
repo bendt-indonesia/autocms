@@ -1,15 +1,15 @@
 <?php
 
-namespace Bendt\autocms\Controllers;
+namespace Bendt\Autocms\Controllers;
 
 use App\Config\ConfigStore;
-use Bendt\autocms\Classes\PageManager;
+use Bendt\Autocms\Classes\PageManager;
 use Illuminate\Support\Facades\DB;
-use Bendt\autocms\Classes\StoreManager;
-use Bendt\autocms\Facades\Config;
-use Bendt\autocms\Models\PageGroup;
-use Bendt\autocms\Services\PageListService;
-use Bendt\autocms\Services\PageService;
+use Bendt\Autocms\Classes\StoreManager;
+use Bendt\Autocms\Facades\Config;
+use Bendt\Autocms\Models\PageGroup;
+use Bendt\Autocms\Services\PageListService;
+use Bendt\Autocms\Services\PageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Bendt\autocms\Classes;
+namespace Bendt\Autocms\Classes;
 
-use Bendt\autocms\Models\Language;
+use Bendt\Autocms\Models\Language;
 
 class LanguageManager
 {

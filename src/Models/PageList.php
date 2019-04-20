@@ -1,8 +1,8 @@
 <?php
 
-namespace Bendt\autocms\Models;
+namespace Bendt\Autocms\Models;
 
-use Bendt\autocms\Services\PageGroupService;
+use Bendt\Autocms\Services\PageGroupService;
 use Illuminate\Database\Eloquent\Model;
 
 class PageList extends Model

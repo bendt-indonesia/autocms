@@ -1,6 +1,6 @@
 <?php
 
-namespace Bendt\autocms;
+namespace Bendt\Autocms;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
@@ -8,18 +8,18 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
-use Bendt\autocms\Classes\ConfigManager;
-use Bendt\autocms\Classes\LanguageManager;
-use Bendt\autocms\Classes\PageManager;
-use Bendt\autocms\Classes\StoreManager;
+use Bendt\Autocms\Classes\ConfigManager;
+use Bendt\Autocms\Classes\LanguageManager;
+use Bendt\Autocms\Classes\PageManager;
+use Bendt\Autocms\Classes\StoreManager;
 
-use Bendt\autocms\Facades\Config as Config;
-use Bendt\autocms\Facades\Language as LanguageFacades;
-use Bendt\autocms\Facades\Page as PageFacades;
-use Bendt\autocms\Facades\Store as StoreFacades;
-use Bendt\autocms\routes\Cms as CMSRoute;
+use Bendt\Autocms\Facades\Config as Config;
+use Bendt\Autocms\Facades\Language as LanguageFacades;
+use Bendt\Autocms\Facades\Page as PageFacades;
+use Bendt\Autocms\Facades\Store as StoreFacades;
+use Bendt\Autocms\routes\Cms as CMSRoute;
 
-use Bendt\autocms\Middleware\Language;
+use Bendt\Autocms\Middleware\Language;
 
 class CMSServiceProvider extends ServiceProvider
 {

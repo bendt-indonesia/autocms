@@ -1,6 +1,6 @@
 <?php
 
-namespace Bendt\autocms\Models;
+namespace Bendt\Autocms\Models;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;

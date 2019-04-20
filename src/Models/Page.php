@@ -1,6 +1,6 @@
 <?php
 
-namespace Bendt\autocms\Models;
+namespace Bendt\Autocms\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;

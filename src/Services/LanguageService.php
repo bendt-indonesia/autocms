@@ -1,8 +1,8 @@
 <?php
 
-namespace Bendt\autocms\Services;
+namespace Bendt\Autocms\Services;
 
-use Bendt\autocms\Models\Language as Model;
+use Bendt\Autocms\Models\Language as Model;
 
 class LanguageService
 {

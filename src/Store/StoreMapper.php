@@ -1,9 +1,9 @@
 <?php
 
-namespace Bendt\autocms\Store;
+namespace Bendt\Autocms\Store;
 
-use Bendt\autocms\Models\Language;
-use Bendt\autocms\Models\PageGroup;
+use Bendt\Autocms\Models\Language;
+use Bendt\Autocms\Models\PageGroup;
 
 class StoreMapper
 {

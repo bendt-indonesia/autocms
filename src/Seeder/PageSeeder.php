@@ -1,9 +1,9 @@
 <?php
 
-namespace Bendt\autocms\Seeder;
+namespace Bendt\Autocms\Seeder;
 
-use Bendt\autocms\Services\PageService;
-use Bendt\autocms\Services\PageListService;
+use Bendt\Autocms\Services\PageService;
+use Bendt\Autocms\Services\PageListService;
 
 class PageSeeder
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Bendt\autocms\Seeder;
+namespace Bendt\Autocms\Seeder;
 
-use Bendt\autocms\Services\LanguageService;
+use Bendt\Autocms\Services\LanguageService;
 
 class LanguageSeeder
 {

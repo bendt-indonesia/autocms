@@ -1,5 +1,5 @@
 <?php
-namespace Bendt\autocms\routes;
+namespace Bendt\Autocms\routes;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 //use Illuminate\Routing\Route;

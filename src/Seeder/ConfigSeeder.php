@@ -1,8 +1,8 @@
 <?php
 
-namespace Bendt\autocms\Seeder;
+namespace Bendt\Autocms\Seeder;
 
-use Bendt\autocms\Models\Config;
+use Bendt\Autocms\Models\Config;
 
 class ConfigSeeder
 {

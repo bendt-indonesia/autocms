@@ -1,6 +1,6 @@
 <?php
 
-namespace Bendt\autocms\Middleware;
+namespace Bendt\Autocms\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;

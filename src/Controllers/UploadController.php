@@ -1,9 +1,9 @@
 <?php
 
-namespace Bendt\autocms\Controllers;
+namespace Bendt\Autocms\Controllers;
 
 use App\Http\Controllers\MyController;
-use Bendt\autocms\Services\ImageService;
+use Bendt\Autocms\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

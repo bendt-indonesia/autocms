@@ -1,10 +1,10 @@
 <?php
 
-namespace Bendt\autocms\Classes;
+namespace Bendt\Autocms\Classes;
 
 use Illuminate\Support\Facades\DB;
-use Bendt\autocms\Exceptions\NoConfigFoundException;
-use Bendt\autocms\Models\Config as Model;
+use Bendt\Autocms\Exceptions\NoConfigFoundException;
+use Bendt\Autocms\Models\Config as Model;
 
 class ConfigManager
 {

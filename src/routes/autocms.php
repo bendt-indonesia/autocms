@@ -2,7 +2,7 @@
 
 Route::group([
     'prefix' => '/backend/cms/',
-    'namespace' => 'Bendt\autocms\Controllers',
+    'namespace' => 'Bendt\Autocms\Controllers',
     'middleware' => ['web','auth']
 ], function() {
     Route::get('/config', 'CMSController@config')->name('cms.config');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bendt\autocms\Exceptions;
+namespace Bendt\Autocms\Exceptions;
 
 class NoConfigFoundException extends \Exception
 {

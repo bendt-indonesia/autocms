@@ -1,5 +1,5 @@
 <?php
-namespace Bendt\autocms\Services;
+namespace Bendt\Autocms\Services;
 
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;

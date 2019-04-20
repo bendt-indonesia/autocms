@@ -1,9 +1,9 @@
 <?php
 
-namespace Bendt\autocms\Classes;
+namespace Bendt\Autocms\Classes;
 
 use Illuminate\Support\Facades\Cache;
-use Bendt\autocms\Store\StoreMapper;
+use Bendt\Autocms\Store\StoreMapper;
 
 class StoreManager
 {

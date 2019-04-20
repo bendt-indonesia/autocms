@@ -1,6 +1,6 @@
 <?php
 
-namespace Bendt\autocms\Classes;
+namespace Bendt\Autocms\Classes;
 
 
 class RouteManager

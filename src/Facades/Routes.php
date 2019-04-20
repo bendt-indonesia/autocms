@@ -1,6 +1,6 @@
 <?php
 
-namespace Bendt\autocms\Facades;
+namespace Bendt\Autocms\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

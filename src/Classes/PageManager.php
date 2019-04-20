@@ -1,9 +1,9 @@
 <?php
 
-namespace Bendt\autocms\Classes;
+namespace Bendt\Autocms\Classes;
 
-use Bendt\autocms\Models\Page;
-use Bendt\autocms\Services\PageService;
+use Bendt\Autocms\Models\Page;
+use Bendt\Autocms\Services\PageService;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

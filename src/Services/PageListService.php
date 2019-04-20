@@ -1,14 +1,14 @@
 <?php
 
-namespace Bendt\autocms\Services;
+namespace Bendt\Autocms\Services;
 
 use Illuminate\Support\Facades\DB;
-use Bendt\autocms\Models\Page;
-use Bendt\autocms\Models\PageList;
-use Bendt\autocms\Models\PageListDetail;
-use Bendt\autocms\Models\PageListElement;
-use Bendt\autocms\Models\PageListPreset;
-use Bendt\autocms\Services\LanguageService;
+use Bendt\Autocms\Models\Page;
+use Bendt\Autocms\Models\PageList;
+use Bendt\Autocms\Models\PageListDetail;
+use Bendt\Autocms\Models\PageListElement;
+use Bendt\Autocms\Models\PageListPreset;
+use Bendt\Autocms\Services\LanguageService;
 use Illuminate\Support\Facades\Storage;
 
 class PageListService

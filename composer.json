@@ -1,9 +1,9 @@
 {
   "name": "bendt/autocms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://bendt.io",
   "license": "MIT",
-  "description": "Presented to you by Bendt Indonesia, for Managing Content website usage",
+  "description": "Laravel CMS Tools",
   "type": "laravel",
   "authors": [
     {
