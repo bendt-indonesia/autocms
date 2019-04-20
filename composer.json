@@ -1,0 +1,26 @@
+{
+    "name": "bendt/autocms",
+    "version": "1.0.0",
+    "description": "Presented to you by Bendt Indonesia, for Managing Content website usage",
+    "type": "laravel",
+    "authors": [
+        {
+            "name": "Ben Walandow",
+            "email": "contact@bendt.io"
+        },
+        {
+            "name": "Stewart Jingga",
+            "email": "stewart_jingga@yahoo.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Bendt\\Autocms\\": "src/"
+      }
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "intervention/image": "^2.4"
+    },
+    "license": "MIT"
+}
