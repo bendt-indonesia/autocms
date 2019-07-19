@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Facade;
 
 class Language extends Facade
 {
-    protected static function getFacadeAccessor() { return 'languagemanager'; }
+    protected static function getFacadeAccessor() { return 'languageManager'; }
 }

@@ -60,28 +60,28 @@ class CMSServiceProvider extends ServiceProvider
         $alias_loader = AliasLoader::getInstance();
 
         // Bind Page Manager
-        App::bind('pagemanager', function()
+        App::bind('pageManager', function()
         {
             return new PageManager();
         });
         $alias_loader->alias('CMSPage', PageFacades::class);
 
         //Bind Language Manager
-        App::bind('languagemanager', function()
+        App::bind('languageManager', function()
         {
             return new LanguageManager();
         });
         $alias_loader->alias('Language', LanguageFacades::class);
 
         // Bind Config Class
-        App::bind('configmanager', function()
+        App::bind('configManager', function()
         {
             return new ConfigManager();
         });
         $alias_loader->alias('CMSConfig', Config::class);
 
         // Bind Config Class
-        App::bind('storemanager', function()
+        App::bind('storeManager', function()
         {
             return new StoreManager();
         });

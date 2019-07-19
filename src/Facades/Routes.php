@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Facade;
 
 class Routes extends Facade
 {
-    protected static function getFacadeAccessor() { return 'routemanager'; }
+    protected static function getFacadeAccessor() { return 'routeManager'; }
 }
