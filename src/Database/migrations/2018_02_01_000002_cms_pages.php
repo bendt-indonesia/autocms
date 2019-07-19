@@ -41,8 +41,6 @@ class CMSPages extends Migration
             $table->string('type',20)->default('text');
             $table->longText('content')->nullable();
             $table->string('rules',100)->nullable();
-            $table->boolean('editor')->default(0);
-            $table->boolean('dropify')->default(0);
             $table->string('label',190)->nullable();
             $table->string('placeholder',190)->nullable();
             $table->string('note',190)->nullable();
@@ -84,8 +82,6 @@ class CMSPages extends Migration
             $table->string('type',20)->default('text');
             $table->longText('content')->nullable();
             $table->string('rules',100)->nullable();
-            $table->boolean('editor')->default(0);
-            $table->boolean('dropify')->default(0);
             $table->string('label',190)->nullable();
             $table->string('placeholder',190)->nullable();
             $table->string('note',190)->nullable();
@@ -102,8 +98,6 @@ class CMSPages extends Migration
             $table->string('name',190);
             $table->string('type',20)->default('text');
             $table->string('rules',100)->nullable();
-            $table->boolean('editor')->default(0);
-            $table->boolean('dropify')->default(0);
             $table->string('label',190)->nullable();
             $table->string('placeholder',190)->nullable();
             $table->string('note',190)->nullable();
