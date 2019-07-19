@@ -49,7 +49,7 @@ class PageListSeeder
 
     public static function element($name, $content, $optional = [])
     {
-        $allowed = ['type', 'rules', 'label', 'placeholder', 'editor', 'dropify', 'note'];
+        $allowed = ['type', 'rules', 'label', 'placeholder', 'note'];
         $return = [
             'name' => str_slug($name),
             'content' => $content,

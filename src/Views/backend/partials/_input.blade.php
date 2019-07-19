@@ -20,7 +20,7 @@ $alt_name = str_replace('[', '.', $alt_name);
         <span class="js-fileName">{{$file_exists?"Replace":"Choose"}}</span>
     </label>
 @else
-    @if(isset($control['editor']) && $control['editor'])
+    @if(isset($control['type']) && $control['type'] == 'editor')
         <textarea class="form-control tmce" id="{{$name}}" name="{{$name}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}" @if(isset($control['rows']))rows="{{$control['rows']}}"@endif>{{$control['default']}}</textarea>
     @elseif(isset($control['type']) && $control['type'] == 'textarea')
         <textarea class="form-control" id="{{$name}}" name="{{$name}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}" @if(isset($control['rows']))rows="{{$control['rows']}}"@endif>{{$control['default']}}</textarea>

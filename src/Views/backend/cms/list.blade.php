@@ -66,8 +66,6 @@
                                                         'placeholder' => $el->placeholder,
                                                         'default' => old($el->name,$el->content),
                                                         'rows' => '4',
-                                                        'editor' => $el->editor,
-                                                        'dropify' => $el->dropify,
                                                         'note' => $el->note,
                                                         'required' => (strpos($el->rules, 'required') !== false)
                                                     ],
@@ -166,8 +164,6 @@
                                                         'placeholder' => $row->placeholder,
                                                         'default' => old($locale->iso.'.'.$row->name,$row->content),
                                                         'rows' => '4',
-                                                        'editor' => $row->editor,
-                                                        'dropify' => $row->dropify,
                                                         'note' => $row->note,
                                                         'required' => (strpos($row->rules, 'required') !== false)
                                                     ],

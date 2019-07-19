@@ -40,8 +40,6 @@
                                 'placeholder' => $el->name,
                                 'default' => old($el->name,$el->content),
                                 'rows' => '4',
-                                'editor' => $el->editor,
-                                'dropify' => $el->dropify,
                             ],
                         ]
                     ])

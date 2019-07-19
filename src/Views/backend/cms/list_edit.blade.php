@@ -56,8 +56,6 @@
                                             'placeholder' => '',
                                             'default' => old($locale->iso.'.'.$row->name,$row->content),
                                             'rows' => '4',
-                                            'editor' => $row->editor,
-                                            'dropify' => $row->dropify,
                                             'note' => $row->note,
                                             'required' => (strpos($row->rules, 'required') !== false)
                                         ],

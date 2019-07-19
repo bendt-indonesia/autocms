@@ -30,7 +30,7 @@ class PageSeeder
 
     public static function element($locale = 'en', $name, $content, $optional = [])
     {
-        $allowed = ['type', 'rules', 'label', 'placeholder', 'editor', 'dropify', 'group_id', 'note'];
+        $allowed = ['type', 'rules', 'label', 'placeholder', 'group_id', 'note'];
         $return = [
             'name' => str_slug($name),
             'content' => $content,

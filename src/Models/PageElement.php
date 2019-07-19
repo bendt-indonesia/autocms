@@ -8,7 +8,7 @@ class PageElement extends Model
 {
     protected $table = 'page_element';
     protected $guarded = [];
-    protected $fillable = ['page_id','group_id','locale','name','type','content','editor','dropify','label','placeholder','note'];
+    protected $fillable = ['page_id','group_id','locale','name','type','content','label','placeholder','note'];
 
     public function page()
     {
