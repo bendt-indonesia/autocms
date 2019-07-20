@@ -2,6 +2,7 @@
 
 namespace Bendt\Autocms\Seeder;
 
+use Illuminate\Support\Arr;
 use Bendt\Autocms\Services\PageService;
 use Bendt\Autocms\Services\PageListService;
 
@@ -12,7 +13,7 @@ class PageSeeder
         $page = PageService::create([
             'parent_id' => $parent_id,
             'name' => $name,
-            'slug' => $slug ? $slug : str_slug($name),
+            'slug' => $slug ? $slug : Str::slug($name),
         ]);
         foreach ($contents as $index=>$row) {
             if (isset($row[0])) {
@@ -30,9 +31,9 @@ class PageSeeder
 
     public static function element($locale = 'en', $name, $content, $optional = [])
     {
-        $allowed = ['type', 'rules', 'label', 'placeholder', 'group_id', 'note'];
+        $allowed = ['type', 'rules', 'label', 'sort_no', 'placeholder', 'group_id', 'note'];
         $return = [
-            'name' => str_slug($name),
+            'name' => Str::slug($name),
             'content' => $content,
             'locale' => $locale,
         ];
@@ -49,7 +50,7 @@ class PageSeeder
         $list = PageListService::create([
             'page_id' => $page_id,
             'name' => $name,
-            'slug' => str_slug($name),
+            'slug' => Str::slug($name),
         ]);
 
         foreach ($preset as $idx=>$row) {
@@ -104,13 +105,19 @@ class PageSeeder
         return $return;
     }
 
-    public static function group($name, $description = null)
+    public static function group($name, $description = null, $id = null)
     {
-        $group = PageService::createGroup([
+        $arr = [
             'name' => $name,
-            'slug' => str_slug($name),
+            'slug' => Str::slug($name),
             'description' => $description
-        ]);
+        ];
+
+        if($id !== null) {
+            $arr['id'] = $id;
+        }
+
+        $group = PageService::createGroup($id);
 
         return $group;
     }

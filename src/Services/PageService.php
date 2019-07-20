@@ -4,6 +4,7 @@ namespace Bendt\Autocms\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use Bendt\Autocms\Models\Page;
 use Bendt\Autocms\Models\PageElement;
 use Bendt\Autocms\Models\PageGroup;
@@ -142,7 +143,7 @@ class PageService
     {
         $model = new Page($input);
         if(!$model->slug) {
-            $model->slug = str_slug($model->name);
+            $model->slug = Str::slug($model->name);
         }
 
         $model->save();

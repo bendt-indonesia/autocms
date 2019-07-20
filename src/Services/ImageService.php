@@ -2,6 +2,7 @@
 namespace Bendt\Autocms\Services;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class ImageService
@@ -104,6 +105,6 @@ class ImageService
 
     public static function slug_with_number($string)
     {
-        return str_slug($string . '-' . rand(0,9) . rand(0,9) . rand(0,9));
+        return Str::slug($string . '-' . rand(0,9) . rand(0,9) . rand(0,9));
     }
 }

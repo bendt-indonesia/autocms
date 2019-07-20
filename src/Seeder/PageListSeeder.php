@@ -2,6 +2,7 @@
 
 namespace Bendt\Autocms\Seeder;
 
+use Illuminate\Support\Arr;
 use Bendt\Autocms\Services\PageListService;
 
 class PageListSeeder
@@ -12,7 +13,7 @@ class PageListSeeder
             'locale' => $locale,
             'page_id' => $page_id,
             'name' => $name,
-            'slug' => str_slug($name),
+            'slug' => Str::slug($name),
             'description' => $description,
         ]);
         foreach ($contents as $row) {
@@ -51,7 +52,7 @@ class PageListSeeder
     {
         $allowed = ['type', 'rules', 'label', 'placeholder', 'note'];
         $return = [
-            'name' => str_slug($name),
+            'name' => Str::slug($name),
             'content' => $content,
         ];
         foreach ($optional as $index => $row) {
