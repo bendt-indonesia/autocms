@@ -10,7 +10,7 @@
       "name": "Ben Walandow",
       "email": "contact@bendt.io",
       "homepage": "https://bendt.co.id"
-    },
+    }
   ],
   "require": {
     "php": ">=7.1.3",
