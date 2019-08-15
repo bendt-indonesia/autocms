@@ -49,7 +49,7 @@ $alt_name = str_replace('[', '.', $alt_name);
     @elseif(isset($control['type']) && $control['type'] == 'file')
         <input type="file" id="{{$name.$control['id']}}" name="{{$name}}" class="input-file"/>
         @if($file_exists)
-            <a href="{{$control['default']}}">View File</a>
+            <a href="{{Storage::url($control['default'])}}" target="_blank">View File</a>
             {{--<img src="{{$control['default']}}" width="auto" height="150" />--}}
         @endif
         <label for="{{$name.$control['id']}}" class="btn btn-file js-labelFile">
