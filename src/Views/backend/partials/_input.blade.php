@@ -47,12 +47,12 @@ $alt_name = str_replace('[', '.', $alt_name);
             @endif
         </select>
     @elseif(isset($control['type']) && $control['type'] == 'file')
-        <input type="file" id="{{$name}}" name="{{$name}}" class="input-file"/>
+        <input type="file" id="{{$name.$control['id']}}" name="{{$name}}" class="input-file"/>
         @if($file_exists)
             <a href="{{$control['default']}}">View File</a>
             {{--<img src="{{$control['default']}}" width="auto" height="150" />--}}
         @endif
-        <label for="logo_url" class="btn btn-file js-labelFile">
+        <label for="{{$name.$control['id']}}" class="btn btn-file js-labelFile">
             <i class="icon fa fa-check"></i>
             <span class="js-fileName">Change file</span>
         </label>
