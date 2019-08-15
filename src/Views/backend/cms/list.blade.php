@@ -62,7 +62,7 @@
                                                     $locale->iso.'['.$el->name.']' => [
                                                         'id' => 0,
                                                         'type' => $el->type,
-                                                        'label' => $el->label ?? $el->name,
+                                                        'label' => $el->label != '' ? $el->label : $el->name,
                                                         'placeholder' => $el->placeholder,
                                                         'default' => old($el->name,$el->content),
                                                         'rows' => '4',

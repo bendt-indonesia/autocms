@@ -63,6 +63,11 @@ class PageService
         return Page::with('elements')->get();
     }
 
+    public static function getAllWithList()
+    {
+        return Page::with('lists')->get();
+    }
+
     public static function getAllParentPage($slugs = NULL)
     {
         $page = Page::where('parent_id',NULL);

@@ -12,6 +12,8 @@ class PageManager
 {
     const CACHE_PREFIX = 'page-', CACHE__MINUTE_DURATION = 1440;
 
+    const ALL_PAGE_CACHE_KEY = 'BENDTSI';
+
     private $_data = null;
 
     private function checkCache($slug){
@@ -22,9 +24,23 @@ class PageManager
         return $data;
     }
 
+    private function checkPageAllCache(){
+        $data = Cache::get(self::CACHE_PREFIX.'-'.self::ALL_PAGE_CACHE_KEY);
+        if(is_null($data)) {
+            $data = $this->_fetchAll();
+        }
+        return $data;
+    }
+
     public function clearCache($slug)
     {
         Cache::forget(self::CACHE_PREFIX.$slug);
+    }
+
+    public function all()
+    {
+        $data = $this->checkPageAllCache();
+        return $data;
     }
 
     public function get($slug)
@@ -42,9 +58,25 @@ class PageManager
         return $config;
     }
 
+    private function _fetchAll()
+    {
+        $config = Cache::remember(self::CACHE_PREFIX.'-'.self::ALL_PAGE_CACHE_KEY, self::CACHE__MINUTE_DURATION, function(){
+            return $this->_fetchAllFromDatabase();
+        });
+
+        return $config;
+    }
+
     private function _fetchFromDatabase($slug)
     {
         return PageService::get($slug);
+    }
+
+    private function _fetchAllFromDatabase()
+    {
+        $pages = PageService::getAllWithList();
+        $pages->keyBy('slug')->toArray();
+        return $pages;
     }
     /*
     public function store($input)
