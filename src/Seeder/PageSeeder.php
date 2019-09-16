@@ -3,6 +3,7 @@
 namespace Bendt\Autocms\Seeder;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Bendt\Autocms\Services\PageService;
 use Bendt\Autocms\Services\PageListService;
 
@@ -117,7 +118,7 @@ class PageSeeder
             $arr['id'] = $id;
         }
 
-        $group = PageService::createGroup($id);
+        $group = PageService::createGroup($arr);
 
         return $group;
     }
