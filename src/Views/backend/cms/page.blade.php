@@ -43,7 +43,7 @@
                                             $locale->iso.'['.$row->name.']' => [
                                                 'id' => $row->id,
                                                 'type' => $row->type,
-                                                'label' => $row->name,
+                                                'label' => $row->label != '' ? $row->label : $row->name,
                                                 'placeholder' => '',
                                                 'default' => old($locale->iso.'.'.$row->name,$row->content),
                                                 'rows' => '4',
