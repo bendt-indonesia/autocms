@@ -48,6 +48,7 @@ class CMSServiceProvider extends ServiceProvider
 
         //Load routes
         require __DIR__ . '/routes/autocms.php';
+        require __DIR__ . '/helper.php';
     }
 
     /**

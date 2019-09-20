@@ -37,8 +37,11 @@ $file_exists = (isset($control['default']) && !is_null($control['default']) && $
 @elseif(isset($control['type']) && $control['type'] == 'file')
     <input type="file" id="{{$name.$control['id']}}" name="{{$name}}" class="input-file"/>
     @if($file_exists)
-        <a href="{{Storage::url($control['default'])}}" target="_blank">View File</a>
-        {{--<img src="{{$control['default']}}" width="auto" height="150" />--}}
+        @if(endsWith($control['default'],'jpg') || endsWith($control['default'],'png') || endsWith($control['default'],'jpeg'))
+            <img class="image-thumbs" src="{{Storage::url($control['default'])}}">
+        @else
+            <a href="{{Storage::url($control['default'])}}" target="_blank">View File</a>
+        @endif
     @endif
     <label for="{{$name.$control['id']}}" class="btn btn-file js-labelFile">
         <i class="icon fa fa-check"></i>
