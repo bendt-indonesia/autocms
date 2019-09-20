@@ -27,7 +27,7 @@ class PageList extends Model
 
     public function preset()
     {
-        return $this->hasMany(PageListPreset::class);
+        return $this->hasMany(PageListPreset::class)->orderBy('sort_no');
     }
 
     public function scopeKey($query, $slug)

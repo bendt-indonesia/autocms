@@ -13,7 +13,7 @@ class Page extends Model
 
     public function elements()
     {
-        return $this->hasMany(PageElement::class);
+        return $this->hasMany(PageElement::class)->orderBy('sort_no');
     }
 
     public function lists()

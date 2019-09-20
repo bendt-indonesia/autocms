@@ -18,7 +18,7 @@ class PageListDetail extends Model
 
     public function elements()
     {
-        return $this->hasMany(PageListElement::class);
+        return $this->hasMany(PageListElement::class)->orderBy('sort_no');
     }
 
     public function element($name)
