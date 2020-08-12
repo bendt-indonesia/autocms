@@ -108,6 +108,10 @@
             @endforeach
         </ul>
 
+        <form method="post" enctype="multipart/form-data"
+              action="{{route('cms.update.list.detail',['slug'=>$page->slug])}}"
+              id="form_list_update">
+        {{csrf_field()}}
         <!-- Tab panes -->
         <div class="tab-content">
             @foreach(cstore('language') as $index=>$locale)
@@ -116,10 +120,6 @@
                     <div class="pad-20">
                         @foreach($model->details as $idx=>$detail)
                             <div class="card card-body mb-4">
-                                <form method="post" enctype="multipart/form-data"
-                                      action="{{route('cms.update.list.detail',['slug'=>$page->slug])}}"
-                                      id="form_list_{{$idx}}">
-                                    {{csrf_field()}}
                                     <input type="hidden" name="detail_id" value="{{$detail->id}}">
                                     <div class="row">
                                         <div class="col-lg-12 text-center">
@@ -184,14 +184,13 @@
                                                     class="fa fa-close"></i> Delete</a>
                                         </div>
                                     </div>
-                                </form>
                             </div> <!--card-->
                         @endforeach
                     </div>
                 </div>
             @endforeach
         </div>
-
+        </form>
     </div> <!-- card -->
 
     <div class="text-center mb-5 mt-5">
