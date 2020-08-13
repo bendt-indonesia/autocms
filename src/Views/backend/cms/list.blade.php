@@ -169,24 +169,27 @@
                                             ])
                                         @endif
                                     @endforeach
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <button type="button" class="btn btn-primary btn-sm btn-block"
-                                                    onclick="save_list(this,{{$detail->sort_no}},{{$index}});"><i
-                                                        class="fa fa-save"></i> Save
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <a data-href="{{route('cms.delete.list.detail',['slug'=>$page->slug,'detail_id'=>$detail->id])}}"
-                                               class="btn btn-danger btn-block btn-sm text-white"
-                                               onclick="pop_delete(this);"><i
-                                                        class="fa fa-close"></i> Delete</a>
-                                        </div>
-                                    </div>
+
                                 </div> <!--card-->
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="pad-20">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary btn-sm btn-block"
+                                    onclick="save_list(this,{{$detail->sort_no}},{{$index}});"><i
+                                        class="fa fa-save"></i> Save
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <a data-href="{{route('cms.delete.list.detail',['slug'=>$page->slug,'detail_id'=>$detail->id])}}"
+                               class="btn btn-danger btn-block btn-sm text-white"
+                               onclick="pop_delete(this);"><i
+                                        class="fa fa-close"></i> Delete</a>
+                        </div>
+                    </div>
                 </div>
             </div> <!-- card -->
             <br><br>
