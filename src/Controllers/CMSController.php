@@ -131,7 +131,7 @@ class CMSController
     }
 
     //AJAX POST
-    public function listPost(Request $request, $slug)
+    public function listPost(Request $request, $slug, $locale = null)
     {
         $detail_id = $request->input('detail_id');
         $page = $this->getPage($slug);
@@ -142,7 +142,7 @@ class CMSController
             'detail_id' => 'required|exists:page_list_detail,id',
             'sort_no' => 'required|numeric|min:1',
         ];
-        $rules += PageListService::getPageListElementRules($detail_id);
+        $rules += PageListService::getPageListElementRules($detail_id, $locale);
 
         try {
             $validator = Validator::make($request->all(), $rules);

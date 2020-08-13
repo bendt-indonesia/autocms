@@ -89,65 +89,65 @@
     </div>
 
     @foreach($model->details as $idx=>$detail)
-        <form method="post" enctype="multipart/form-data"
-              action="{{route('cms.update.list.detail',['slug'=>$page->slug])}}"
-              id="form_list_update">
-            {{csrf_field()}}
-            <input type="hidden" name="detail_id" value="{{$detail->id}}">
-            <div class="card">
-                <div class="pad-20">
-                    <div class="text-center">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button type="button" class="btn btn-sm btn-info"
-                                        data-id="{{$detail->id}}"
-                                        data-list_id="{{$model->id}}"
-                                        data-type="promote"
-                                        onclick="move(this)"
-                                        {{$idx==0?"disabled":""}}
-                                ><i class="fa fa-arrow-up"></i></button>
-                            </div>
-                            <input type="text" name="sort_no" class="form-control text-center"
-                                   value="{{$detail->sort_no}}"
-                                   style="width: 150px; display: inline">
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-sm btn-info"
-                                        data-id="{{$detail->id}}"
-                                        data-list_id="{{$model->id}}"
-                                        data-type="demote"
-                                        onclick="move(this)"
-                                        {{($idx == (count($model->details)-1))?"disabled":""}}
-                                ><i class="fa fa-arrow-down"></i></button>
-                            </div>
+        <div class="card">
+            <div class="pad-20">
+                <div class="text-center">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-sm btn-info"
+                                    data-id="{{$detail->id}}"
+                                    data-list_id="{{$model->id}}"
+                                    data-type="promote"
+                                    onclick="move(this)"
+                                    {{$idx==0?"disabled":""}}
+                            ><i class="fa fa-arrow-up"></i></button>
+                        </div>
+                        <input type="text" name="sort_no" class="form-control text-center"
+                               value="{{$detail->sort_no}}"
+                               style="width: 150px; display: inline">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-sm btn-info"
+                                    data-id="{{$detail->id}}"
+                                    data-list_id="{{$model->id}}"
+                                    data-type="demote"
+                                    onclick="move(this)"
+                                    {{($idx == (count($model->details)-1))?"disabled":""}}
+                            ><i class="fa fa-arrow-down"></i></button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                @if(count(cstore('language'))>1)
-                    <div class="card-body p-b-0">
-                        <h6 class="card-subtitle">Please select language tab you wish to edit</h6>
-                    </div>
-                @endif
+            @if(count(cstore('language'))>1)
+                <div class="card-body p-b-0">
+                    <h6 class="card-subtitle">Please select language tab you wish to edit</h6>
+                </div>
+            @endif
 
-                <ul class="nav nav-tabs customtab" role="tablist">
-                    @foreach(cstore('language') as $index=>$locale)
-                        <li class="nav-item">
-                            <a class="nav-link {{$index==0?"active":""}} {{count($errors->get($locale->iso.'.*'))>0?"text-danger":""}}
-                                    " data-toggle="tab" href="#tab-{{$detail->id}}-{{$locale->iso}}" role="tab"
-                               aria-expanded="true">
-                                <span class="hidden-sm-up"><i class='fa fa-language mr-2'></i></span> <span
-                                        class="hidden-xs-down">{{$locale->name}} {{count($errors->get($locale->iso.'.*'))>0?"*":""}}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+            <ul class="nav nav-tabs customtab" role="tablist">
+                @foreach(cstore('language') as $index=>$locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{$index==0?"active":""}} {{count($errors->get($locale->iso.'.*'))>0?"text-danger":""}}
+                                " data-toggle="tab" href="#tab-{{$detail->id}}-{{$locale->iso}}" role="tab"
+                           aria-expanded="true">
+                            <span class="hidden-sm-up"><i class='fa fa-language mr-2'></i></span> <span
+                                    class="hidden-xs-down">{{$locale->name}} {{count($errors->get($locale->iso.'.*'))>0?"*":""}}</span>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
 
-                <div class="tab-content">
-                    @foreach(cstore('language') as $index=>$locale)
-                        <div class="tab-pane {{$index==0?"active":""}}" id="tab-{{$detail->id}}-{{$locale->iso}}"
-                             role="tabpanel"
-                             aria-expanded="true">
-                            <div class="pad-20">
+            <div class="tab-content">
+                @foreach(cstore('language') as $index=>$locale)
+                    <div class="tab-pane {{$index==0?"active":""}}" id="tab-{{$detail->id}}-{{$locale->iso}}"
+                         role="tabpanel"
+                         aria-expanded="true">
+                        <div class="pad-20">
+                            <form method="post" enctype="multipart/form-data"
+                                  action="{{route('cms.update.list.detail',['slug'=>$page->slug])}}"
+                                  id="form_list_update">
+                                {{csrf_field()}}
+                                <input type="hidden" name="detail_id" value="{{$detail->id}}">
                                 <div class="card card-body mb-4">
                                     <div class="clearfix"></div>
                                     <hr>
@@ -171,29 +171,29 @@
                                     @endforeach
 
                                 </div> <!--card-->
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="pad-20">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button type="button" class="btn btn-primary btn-sm btn-block"
-                                    onclick="save_list(this,{{$detail->sort_no}},{{$index}});"><i
-                                        class="fa fa-save"></i> Save
-                            </button>
-                        </div>
-                        <div class="col-sm-6">
-                            <a data-href="{{route('cms.delete.list.detail',['slug'=>$page->slug,'detail_id'=>$detail->id])}}"
-                               class="btn btn-danger btn-block btn-sm text-white"
-                               onclick="pop_delete(this);"><i
-                                        class="fa fa-close"></i> Delete</a>
+                            </form>
                         </div>
                     </div>
+                @endforeach
+            </div>
+            <div class="pad-20">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary btn-sm btn-block"
+                                onclick="save_list(this,{{$detail->sort_no}},{{$index}});"><i
+                                    class="fa fa-save"></i> Save
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <a data-href="{{route('cms.delete.list.detail',['slug'=>$page->slug,'detail_id'=>$detail->id])}}"
+                           class="btn btn-danger btn-block btn-sm text-white"
+                           onclick="pop_delete(this);"><i
+                                    class="fa fa-close"></i> Delete</a>
+                    </div>
                 </div>
-            </div> <!-- card -->
-            <br><br>
-        </form>
+            </div>
+        </div> <!-- card -->
+        <br><br>
     @endforeach
 
     <div class="text-center mb-5 mt-5">

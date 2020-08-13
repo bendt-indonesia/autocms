@@ -141,11 +141,12 @@ class PageListService
         }
     }
 
-    public static function getPageListElementRules($detail_id)
+    public static function getPageListElementRules($detail_id, $locale = null)
     {
         $page = self::getDetailById($detail_id);
         $rules = [];
         foreach ($page->elements as $row) {
+            if($locale !== null && $row->locale !== $locale) continue;
             if (!is_null($row->rules)) $rules[$row->locale.".".$row->name] = $row->rules;
         }
         return $rules;
