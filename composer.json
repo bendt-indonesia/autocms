@@ -1,6 +1,5 @@
 {
   "name": "bendt/autocms",
-  "version": "1.3",
   "homepage": "https://bendt.io",
   "license": "MIT",
   "description": "CMS Tools for Laravel ^5.8 and ^6.0",
