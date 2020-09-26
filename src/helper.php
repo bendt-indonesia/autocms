@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Retrieve our Locale instance
  *
@@ -249,5 +248,23 @@ if(!function_exists('routeL')) {
             $params['locale'] = $locale;
         }
         return route($name,$params);
+    }
+}
+
+
+/**
+ * @param string $name
+ * @param string $value
+ * @param string $default_value
+ *
+ * @return string
+ */
+if (!function_exists('checked_radio')) {
+    function checked_radio($name, $value, $default_value = null)
+    {
+        $old = old($name);
+        $checked = !is_null($old) ? $old == $value : $default_value == $value;
+
+        return $checked ? 'checked' : '';
     }
 }
