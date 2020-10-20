@@ -2,7 +2,18 @@
 
 ])
 
-@section('title',$model->name." Page")
+@section('title',$model->page_list->name." Page > Edit > ID: ".$model->id)
+
+@section('title_right')
+    <div class="pull-right">
+        <a href="{{route('cms.listv2',[
+            'slug' =>  $model->page_list->page->slug,
+            'list_slug' => $model->page_list->slug,
+        ])}}" class="btn btn-info btn-sm">
+            Back
+        </a>
+    </div>
+@endsection
 
 @section('content')
 
@@ -13,64 +24,64 @@
         <input type="hidden" name="detail_id" value="{{$model->id}}">
         <div class="card">
             <div class="card-body p-b-0">
-            <div class="form-group row">
-                <label class="control-label col-sm-2" for="city">
-                    Sort No
-                </label>
-                <div class="col-sm-10">
-                    <div class="form-horizontal">
-                        <input type="text" name="sort_no" class="form-control"
-                               value="{{$model->sort_no}}" required>
+                <div class="form-group row">
+                    <label class="control-label col-sm-2" for="city">
+                        Sort No
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="form-horizontal">
+                            <input type="text" name="sort_no" class="form-control"
+                                   value="{{$model->sort_no}}" required>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            @if(count(cstore('language'))>1)
-                <h6 class="card-subtitle">Please select language tab you wish to edit</h6>
-            @endif
+                @if(count(cstore('language'))>1)
+                    <h6 class="card-subtitle">Please select language tab you wish to edit</h6>
+                @endif
             </div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs customtab" role="tablist">
                 @foreach(cstore('language') as $index=>$locale)
-                <li class="nav-item">
-                    <a class="nav-link {{$index==0?"active":""}} {{count($errors->get($locale->iso.'.*'))>0?"text-danger":""}}
-                            " data-toggle="tab" href="#tab-{{$locale->iso}}" role="tab" aria-expanded="true">
-                        <span class="hidden-sm-up"><i class='fa fa-language mr-2'></i></span> <span class="hidden-xs-down">{{$locale->name}} {{count($errors->get($locale->iso.'.*'))>0?"*":""}}</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{$index==0?"active":""}} {{count($errors->get($locale->iso.'.*'))>0?"text-danger":""}}
+                                " data-toggle="tab" href="#tab-{{$locale->iso}}" role="tab" aria-expanded="true">
+                            <span class="hidden-sm-up"><i class='fa fa-language mr-2'></i></span> <span class="hidden-xs-down">{{$locale->name}} {{count($errors->get($locale->iso.'.*'))>0?"*":""}}</span>
+                        </a>
+                    </li>
                 @endforeach
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
                 @foreach(cstore('language') as $index=>$locale)
-                <div class="tab-pane  {{$index==0?"active":""}}" id="tab-{{$locale->iso}}" role="tabpanel" aria-expanded="true">
-                    <div class="pad-20">
-                        @if(isset($grouped_elements[$locale->iso]))
-                            @foreach($grouped_elements[$locale->iso] as $index2=>$row)
-                                @include('autocms::backend.partials._control-group', [
-                                    'controls' => [
-                                        $locale->iso.'['.$row->name.']' => [
-                                            'id' => $row->id,
-                                            'type' => $row->type,
-                                            'label' => $row->label != '' ? $row->label : $row->name,
-                                            'placeholder' => '',
-                                            'default' => old($locale->iso.'.'.$row->name,$row->content),
-                                            'rows' => '4',
-                                            'note' => $row->note,
-                                            'required' => (strpos($row->rules, 'required') !== false)
-                                        ],
-                                    ]
-                                ])
-                            @endforeach
-                        @endif
+                    <div class="tab-pane  {{$index==0?"active":""}}" id="tab-{{$locale->iso}}" role="tabpanel" aria-expanded="true">
+                        <div class="pad-20">
+                            @if(isset($grouped_elements[$locale->iso]))
+                                @foreach($grouped_elements[$locale->iso] as $index2=>$row)
+                                    @include('autocms::backend.partials._control-group', [
+                                        'controls' => [
+                                            $locale->iso.'['.$row->name.']' => [
+                                                'id' => $row->id,
+                                                'type' => $row->type,
+                                                'label' => $row->label != '' ? $row->label : $row->name,
+                                                'placeholder' => '',
+                                                'default' => old($locale->iso.'.'.$row->name,$row->content),
+                                                'rows' => '4',
+                                                'note' => $row->note,
+                                                'required' => (strpos($row->rules, 'required') !== false)
+                                            ],
+                                        ]
+                                    ])
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
         <button type="button" class="btn btn-primary btn-block mt-3"
                 onclick="save_list(this);"><i
-                class="fa fa-save"></i> Save Changes
+                    class="fa fa-save"></i> Save Changes
         </button>
     </form>
 @endsection

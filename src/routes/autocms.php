@@ -17,7 +17,6 @@ Route::group([
     Route::post('{slug}/list/move', 'CMSController@listMove')->name('cms.move.list');
     Route::post('{slug}/list/{list_slug}/create', 'CMSController@createListDetail')->name('cms.create.list.detail');
     Route::get('{slug}/list/d/{detail_id}', 'CMSController@listDelete')->name('cms.delete.list.detail');
-
     Route::get('{slug}/list/edit/{detail_id}', 'CMSController@listDetailEdit')->name('cms.edit.list.detail');
 });
 

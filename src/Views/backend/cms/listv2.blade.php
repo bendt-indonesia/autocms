@@ -12,6 +12,7 @@
 @endsection
 <?php $table_columns = []; ?>
 @section('content')
+    @include('autocms::backend.component.modalList')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -31,47 +32,37 @@
                             </tr>
                             </thead>
                             <tbody>
-
                             @foreach($model->details as $idx=>$detail)
                                 @foreach(cstore('language') as $index=>$locale)
                                     <tr>
                                         @if($index === 0)
                                             <td rowspan="{{count(cstore('language'))}}">
-                                                <div class="text-center">
-                                                    <button type="button" class="btn btn-sm btn-info"
-                                                            data-id="{{$detail->id}}"
-                                                            data-list_id="{{$model->id}}"
-                                                            data-type="promote"
-                                                            onclick="move(this)"
-                                                            {{$idx==0?"disabled":""}}
-                                                    ><i class="fa fa-arrow-up"></i></button>
-
-                                                    <span style="width: 100px">{{$detail->sort_no}}</span>
-
-                                                    <button type="button" class="btn btn-sm btn-info"
-                                                            data-id="{{$detail->id}}"
-                                                            data-list_id="{{$model->id}}"
-                                                            data-type="demote"
-                                                            onclick="move(this)"
-                                                            {{($idx == (count($model->details)-1))?"disabled":""}}
-                                                    ><i class="fa fa-arrow-down"></i></button>
-                                                </div>
+                                                {{$detail->sort_no}}
                                             </td>
                                         @endif
 
                                         @foreach($detail->elements as $row)
-                                            @if($row->locale == $locale->iso)
-                                                <td>{{$row->content}}</td>
+                                            @if($row->locale == $locale->iso && in_array($row->name,$table_columns))
+                                                <td>
+                                                    {{$row->content}}
+                                                </td>
                                             @endif
                                         @endforeach
 
                                         @if($index === 0)
-                                            <td style="white-space: nowrap">
-                                                <form action="{{route('backend.category.destroy', ['id' => $detail->id])}}"
-                                                      method="post">
+                                            <td style="white-space: nowrap" rowspan="{{count(cstore('language'))}}">
+                                                <form action="{{route('cms.delete.list.detail', [
+                                                        'detail_id' => $detail->id,
+                                                        'slug'=>$page->slug,
+
+                                                      ])}}"
+                                                      method="get">
                                                     {{csrf_field()}}
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <a href="{{route('backend.category.edit', ['id' => $detail->id])}}"
+                                                    <a href="{{route('cms.edit.list.detail', [
+                                                            'detail_id' => $detail->id,
+                                                            'slug'=>$page->slug,
+                                                            ])}}"
                                                        class="btn btn-warning btn-sm">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
@@ -85,10 +76,6 @@
                                     </tr>
 
                                 @endforeach
-
-                                <tr>
-
-                                </tr>
                             @endforeach
                             </tbody>
                         </table>
@@ -96,74 +83,6 @@
                 </div>
             </div>
         </div>
-    </div>
-@endsection
-
-@section('content2')
-
-    @foreach($model->details as $idx=>$detail)
-        <div class="card">
-            <div class="tab-content">
-                @foreach(cstore('language') as $index=>$locale)
-                    <div class="tab-pane {{$index==0?"active":""}}" id="tab-{{$detail->id}}-{{$locale->iso}}"
-                         role="tabpanel"
-                         aria-expanded="true">
-                        <div class="pad-20">
-                            <form method="post" enctype="multipart/form-data"
-                                  action="{{route('cms.update.list.detail',['slug'=>$page->slug])}}"
-                                  id="form_list_update">
-                                {{csrf_field()}}
-                                <input type="hidden" name="detail_id" value="{{$detail->id}}">
-                                <div class="card card-body mb-4">
-                                    <div class="clearfix"></div>
-                                    <hr>
-                                    @foreach($detail->elements as $row)
-                                        @if($row->locale == $locale->iso)
-                                            @include('autocms::backend.partials._control-group', [
-                                                'controls' => [
-                                                    $locale->iso.'['.$row->name.']' => [
-                                                        'id' => $row->id,
-                                                        'type' => $row->type,
-                                                        'label' => $row->name,
-                                                        'placeholder' => $row->placeholder,
-                                                        'default' => old($locale->iso.'.'.$row->name,$row->content),
-                                                        'rows' => '4',
-                                                        'note' => $row->note,
-                                                        'required' => (strpos($row->rules, 'required') !== false)
-                                                    ],
-                                                ]
-                                            ])
-                                        @endif
-                                    @endforeach
-
-                                </div> <!--card-->
-                            </form>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="pad-20">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary btn-sm btn-block"
-                                onclick="save_list(this,{{$detail->sort_no}},{{$index}});"><i
-                                    class="fa fa-save"></i> Save
-                        </button>
-                    </div>
-                    <div class="col-sm-6">
-                        <a data-href="{{route('cms.delete.list.detail',['slug'=>$page->slug,'detail_id'=>$detail->id])}}"
-                           class="btn btn-danger btn-block btn-sm text-white"
-                           onclick="pop_delete(this);"><i
-                                    class="fa fa-close"></i> Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- card -->
-        <br><br>
-    @endforeach
-
-    <div class="text-center mb-5 mt-5">
-        <a href="{{route('cms.page',['slug'=>$page->slug])}}" class="btn btn-default btn-block">Back</a>
     </div>
 @endsection
 

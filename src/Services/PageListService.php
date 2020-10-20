@@ -85,6 +85,13 @@ class PageListService
                     $model->content = $formData[$model->name];
                 }
                 $model->save();
+            } else {
+                $model = new PageListElement();
+                $model->name = $el->name;
+                $model->page_list_detail_id = $detail_id;
+                $model->locale = $locale;
+                $model->rules = $el->rules;
+                $model->save();
             }
         }
 
@@ -99,6 +106,8 @@ class PageListService
 
     public static function createElementsFromSlug($list_slug, $input, $files)
     {
+        $presetFields = PageListService::getPageListPresetNames($list_slug);
+
         $list = self::getBySlug($list_slug);
         $detail = self::createDetail(['page_list_id'=>$list->id, 'sort_no'=>$input['sort_no']]);
         unset($input['sort_no']);
@@ -109,6 +118,15 @@ class PageListService
         foreach($language as $locale) {
             $locales[] = $locale->iso;
         }
+
+//        foreach ($presetFields as $name) {
+//            foreach ($locales as $locale) {
+//                if(isset($input[$locale])) {
+//                    $files_tab = isset($files[$locale])?$files[$locale]:null;
+//                    self::createElement($list->preset, $detail->id, $locale, $input[$locale], $files_tab);
+//                }
+//            }
+//        }
 
         foreach ($input as $locale=>$language_tab) {
             if(in_array($locale,$locales)) {
@@ -163,6 +181,19 @@ class PageListService
         }
 
         return $rules;
+    }
+
+    public static function getPageListPresetNames($slug)
+    {
+        $list = self::getBySlug($slug);
+        $presetNames = [];
+        foreach(cstore('language') as $lang) {
+            foreach ($list->preset as $row) {
+                $presetNames[] = $row->name;
+            }
+        }
+
+        return $presetNames;
     }
 
     private static function remove($file)
