@@ -9,9 +9,13 @@ $file_exists = (isset($control['default']) && !is_null($control['default']) && $
 ?>
 
 @if(isset($control['type']) && $control['type'] == 'editor')
-    <textarea class="form-control tmce" id="{{$name}}" name="{{$name}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}" @if(isset($control['rows']))rows="{{$control['rows']}}"@endif>{{$control['default']}}</textarea>
+    <textarea class="form-control tmce" id="{{$name}}" name="{{$name}}"
+              placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}"
+              @if(isset($control['rows']))rows="{{$control['rows']}}"@endif>{{$control['default']}}</textarea>
 @elseif(isset($control['type']) && $control['type'] == 'textarea')
-    <textarea class="form-control" id="{{$name}}" name="{{$name}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}" @if(isset($control['rows']))rows="{{$control['rows']}}"@endif>{{$control['default']}}</textarea>
+    <textarea class="form-control" id="{{$name}}" name="{{$name}}"
+              placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}"
+              @if(isset($control['rows']))rows="{{$control['rows']}}"@endif>{{$control['default']}}</textarea>
 @elseif(isset($control['type']) && $control['type'] == 'select')
     @if(isset($control['disabled']) && $control['disabled'])
         <input type="hidden" name="{{$name}}" value="{{$control['default']}}"/>
@@ -48,24 +52,28 @@ $file_exists = (isset($control['default']) && !is_null($control['default']) && $
         <span class="js-fileName">Change file</span>
     </label>
 @elseif(isset($control['type']) && $control['type'] == 'time')
-    <input type="text" class="form-control timepicker" value="{{isset($control['default'])?$control['default']:''}}" id="{{$name}}" name="{{$name}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}"
-           @if(isset($control['disabled']) && $control['disabled']) disabled @endif
-           @if(isset($control['readonly']) && $control['readonly']) readonly @endif
-    />
+    <input type="text" class="form-control timepicker" @include('autocms::backend.partials._props', ['name'=>$name,'control' => $control])/>
 @elseif(isset($control['type']) && $control['type'] == 'date')
-    <input type="text" class="form-control datepicker" value="{{isset($control['default'])?$control['default']:''}}" id="{{$name}}" name="{{$name}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}"
-           @if(isset($control['disabled']) && $control['disabled']) disabled @endif
-           @if(isset($control['readonly']) && $control['readonly']) readonly @endif
-    />
+    <input type="text" class="form-control datepicker" @include('autocms::backend.partials._props', ['name'=>$name,'control' => $control])/>
 @elseif(isset($control['type']) && $control['type'] == 'datetime')
-    <input type="text" class="form-control datetimepicker" value="{{isset($control['default'])?$control['default']:''}}" id="{{$name}}" name="{{$name}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}"
-           @if(isset($control['disabled']) && $control['disabled']) disabled @endif
-           @if(isset($control['readonly']) && $control['readonly']) readonly @endif
-    />
+    <input type="text" class="form-control datetimepicker" @include('autocms::backend.partials._props', ['name'=>$name,'control' => $control])/>
+@elseif(isset($control['type']) && $control['type'] == 'radio')
+    <div class="form-group">
+        @foreach(["No", "Yes"] as $key => $value)
+            <div class="radio d-inline mr-3">
+                <label>
+                    <input type="radio"
+                           name="{{$name}}"
+                           value="{{$key}}"
+                           {{checked_radio($name, $key , 1)}}
+                       @if(isset($control['disabled']) && $control['disabled']) disabled @endif
+                    >
+                    {{$value}}
+                </label>
+            </div>
+        @endforeach
+    </div>
 @else
-    <input type="{{isset($control['type'])?$control['type']:'text'}}" class="form-control" id="{{$name}}" name="{{$name}}" value="{{isset($control['default'])?$control['default']:''}}" placeholder="{{isset($control['placeholder'])?$control['placeholder']:''}}"
-           @if(isset($control['disabled']) && $control['disabled']) disabled @endif
-           @if(isset($control['readonly']) && $control['readonly']) readonly @endif
-    />
+    <input type="{{isset($control['type'])?$control['type']:'text'}}" class="form-control" @include('autocms::backend.partials._props', ['name'=>$name,'control' => $control])/>
 @endif
 <small class="text-danger">{{$errors->first($name)}} {{$errors->get($alt_name)?$errors->first($alt_name):""}}</small>

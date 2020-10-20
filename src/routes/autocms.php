@@ -12,6 +12,7 @@ Route::group([
     Route::post('{slug}', 'CMSController@pagePost')->name('cms.update.page');
     Route::post('{slug}/element', 'CMSController@updateContent')->name('cms.update.element');
     Route::get('{slug}/list/{list_slug}', 'CMSController@list')->name('cms.list');
+    Route::get('{slug}/listv2/{list_slug}', 'CMSController@list_v2')->name('cms.listv2');
     Route::post('{slug}/list/{locale?}', 'CMSController@listPost')->name('cms.update.list.detail');
     Route::post('{slug}/list/move', 'CMSController@listMove')->name('cms.move.list');
     Route::post('{slug}/list/{list_slug}/create', 'CMSController@createListDetail')->name('cms.create.list.detail');

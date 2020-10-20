@@ -11,7 +11,6 @@
             <a href="{{$back_link}}" class="btn btn-default btn-block">Back to List</a>
         </div>
         <div class="col-sm-12 m-t-2">
-
             @if(isset($custom_buttons))
                 @foreach($custom_buttons as $row)
                     <a href="{{$row['link']}}" class="{{$row['class']}}">

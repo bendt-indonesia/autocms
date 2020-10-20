@@ -92,6 +92,19 @@ class CMSController
         ]);
     }
 
+    public function list_v2(Request $request, $slug, $list_slug)
+    {
+        $page = $this->getPage($slug);
+        $model = PageListService::getBySlug($list_slug);
+
+        if (!$page || !$model) return redirect()->back();
+
+        return view('autocms::backend.cms.listv2', [
+            'page' => $page,
+            'model' => $model,
+        ]);
+    }
+
     public function listDetailEdit(Request $request, $slug, $detail_id)
     {
         $model = PageListService::getDetailById($detail_id);

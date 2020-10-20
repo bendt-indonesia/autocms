@@ -1,6 +1,6 @@
 <div class="form-horizontal" id="form-horizontal">
     @foreach($controls as $key => $control)
-        @include('autocms::backend.partials._control', ['name' => $key, 'control' => $control])
+        @include('autocms::backend.partials._form-group', ['name' => $key, 'control' => $control])
     @endforeach
     @if(isset($submit_button) && $submit_button)
         <div class="form-group">

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use Illuminate\Support\Facades\DB;
+
 class AlterPages extends Migration
 {
     /**
@@ -13,7 +15,7 @@ class AlterPages extends Migration
      */
     public function up()
     {
-
+        DB::beginTransaction();
         Schema::table('page_element', function (Blueprint $table) {
             $table->string('rules_store',100)->nullable();
             $table->string('rules_update',100)->nullable();
@@ -25,9 +27,12 @@ class AlterPages extends Migration
         });
 
         Schema::table('page_list_preset', function (Blueprint $table) {
+            $table->string('format',100)->nullable(); //null, number, decimal, percent, link
+            $table->string('rules_store',100)->nullable();
+            $table->string('rules_update',100)->nullable();
             $table->boolean('is_table')->default(false);
         });
-
+        DB::commit();
     }
 
     /**
@@ -49,6 +54,8 @@ class AlterPages extends Migration
         });
 
         Schema::table('page_list_preset', function (Blueprint $table) {
+            $table->dropColumn('rules_store');
+            $table->dropColumn('rules_update');
             $table->dropColumn('is_table');
         });
 
