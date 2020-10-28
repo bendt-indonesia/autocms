@@ -4,5 +4,5 @@
             {{$row}} >
         @endforeach
     @endif
-    @include('backend.include.category.option-text-control',['category'=>$category])
+    @include('autocms::backend.include.category.option-text-control',['category'=>$category])
 </option>
