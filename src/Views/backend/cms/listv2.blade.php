@@ -44,7 +44,16 @@
                                         @foreach($detail->elements as $row)
                                             @if($row->locale == $locale->iso && in_array($row->name,$table_columns))
                                                 <td>
-                                                    {{$row->content}}
+                                                    <?php
+                                                    switch($row->type) {
+                                                        case 'file':
+                                                            echo "<a href='".Storage::url($row->content)."'>View File / Image</a>";
+                                                            break;
+                                                        default:
+                                                            echo $row->content;
+                                                            break;
+                                                    }
+                                                    ?>
                                                 </td>
                                             @endif
                                         @endforeach

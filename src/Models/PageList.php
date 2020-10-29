@@ -25,6 +25,11 @@ class PageList extends Model
         return $this->hasMany(PageListDetail::class)->orderBy('sort_no');
     }
 
+    public function elements()
+    {
+        return $this->hasManyThrough(PageListElement::class, PageListDetail::class);
+    }
+
     public function preset()
     {
         return $this->hasMany(PageListPreset::class)->orderBy('sort_no');

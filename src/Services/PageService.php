@@ -49,6 +49,16 @@ class PageService
         return $grouped_elements->toArray();
     }
 
+    public static function map_elements_row($elements) {
+        $elements = collect($elements);
+        $grouped_elements = $elements->groupBy('locale');
+
+        foreach($grouped_elements as $locale=>$elements) {
+            $grouped_elements[$locale] = collect($elements)->keyBy('name')->all();
+        }
+        return $grouped_elements->all();
+    }
+
     public static function map_key_content($obj, $key, $target) {
         $key_paired_contents = [];
         foreach ($obj as $element)
