@@ -210,6 +210,43 @@ class PageSeeder
         return $return;
     }
 
+    public static function metaV2($locale = 'en', $group_id = null, $data, $elements = [])
+    {
+        $return = [
+            [
+                'locale' => $locale,
+                'name' => 'meta-title',
+                'content' => isset($data['title']) ? $data['title'] : 'Default Title',
+                'rules' => 'required|max:60',
+                'group_id' => $group_id
+            ],
+            [
+                'locale' => $locale,
+                'name' => 'meta-description',
+                'content' => isset($data['description']) ? $data['description'] : '',
+                'rules' => 'max:160',
+                'group_id' => $group_id
+            ],
+            [
+                'locale' => $locale,
+                'name' => 'meta-keywords',
+                'content' => isset($data['keywords']) ? $data['keywords'] : '',
+                'rules' => 'required|max:255',
+                'group_id' => $group_id
+            ],
+            [
+                'locale' => $locale,
+                'name' => 'page-script',
+                'content' => isset($data['script']) ? $data['script'] : '',
+                'rules' => '',
+                'group_id' => $group_id,
+                'placeholder' => '<script>//You may input your page script here (Facebook Pixel, Live Chat, Etc)</script>'
+            ],
+        ];
+
+        return array_merge($return,$elements);
+    }
+
     public static function group($name, $description = null, $id = null)
     {
         $slug = Str::slug($name);
