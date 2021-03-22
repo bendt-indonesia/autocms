@@ -173,7 +173,7 @@ class PageSeeder
         return $list;
     }
 
-    public static function meta($locale = 'en', $group_id, $meta_title, $meta_desc, $meta_key = NULL)
+    public static function meta($locale = 'en', $group_id, $meta_title, $meta_desc, $meta_key = '', $script = '')
     {
         $return = [
             [
@@ -189,17 +189,24 @@ class PageSeeder
                 'content' => $meta_desc,
                 'rules' => 'max:160',
                 'group_id' => $group_id
-            ]
-        ];
-        if (!is_null($meta_key)) {
-            $return[] = [
+            ],
+            [
                 'locale' => $locale,
                 'name' => 'meta-keywords',
                 'content' => $meta_key,
                 'rules' => 'required|max:255',
                 'group_id' => $group_id
-            ];
-        }
+            ],
+            [
+                'locale' => $locale,
+                'name' => 'page-script',
+                'content' => $script,
+                'rules' => '',
+                'group_id' => $group_id,
+                'placeholder' => '<script>//You may input your page script here (Facebook Pixel, Live Chat, Etc)</script>'
+            ],
+        ];
+
         return $return;
     }
 
