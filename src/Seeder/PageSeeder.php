@@ -231,7 +231,7 @@ class PageSeeder
                 'locale' => $locale,
                 'name' => 'meta-keywords',
                 'content' => isset($data['keywords']) ? $data['keywords'] : '',
-                'rules' => 'required|max:255',
+                'rules' => 'max:255',
                 'group_id' => $group_id
             ],
             [
