@@ -210,36 +210,37 @@ class PageSeeder
         return $return;
     }
 
-    public static function metaV2($locale = 'en', $group_id = null, $data, $elements = [])
+    public static function metaV2($locale = 'en', $meta_group_id = null, $metas = [], $elements = [])
     {
+
         $return = [
             [
                 'locale' => $locale,
                 'name' => 'meta-title',
-                'content' => isset($data['title']) ? $data['title'] : 'Default Title',
+                'content' => isset($metas['title']) ? $metas['title'] : 'Default Title',
                 'rules' => 'required|max:60',
-                'group_id' => $group_id
+                'group_id' => $meta_group_id
             ],
             [
                 'locale' => $locale,
                 'name' => 'meta-description',
-                'content' => isset($data['description']) ? $data['description'] : '',
+                'content' => isset($metas['description']) ? $metas['description'] : '',
                 'rules' => 'max:160',
-                'group_id' => $group_id
+                'group_id' => $meta_group_id
             ],
             [
                 'locale' => $locale,
                 'name' => 'meta-keywords',
-                'content' => isset($data['keywords']) ? $data['keywords'] : '',
+                'content' => isset($metas['keywords']) ? $metas['keywords'] : '',
                 'rules' => 'max:255',
-                'group_id' => $group_id
+                'group_id' => $meta_group_id
             ],
             [
                 'locale' => $locale,
                 'name' => 'page-script',
-                'content' => isset($data['script']) ? $data['script'] : '',
+                'content' => isset($metas['script']) ? $metas['script'] : '',
                 'rules' => '',
-                'group_id' => $group_id,
+                'group_id' => $meta_group_id,
                 'placeholder' => '<script>//You may input your page script here (Facebook Pixel, Live Chat, Etc)</script>'
             ],
         ];
