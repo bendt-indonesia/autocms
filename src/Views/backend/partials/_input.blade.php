@@ -39,7 +39,6 @@ $file_exists = (isset($control['default']) && !is_null($control['default']) && $
         @endif
     </select>
 @elseif(isset($control['type']) && $control['type'] == 'file')
-    <input type="file" id="{{$name.$control['id']}}" name="{{$name}}" class="input-file"/>
     @if($file_exists)
         @if(endsWith($control['default'],'jpg') || endsWith($control['default'],'png') || endsWith($control['default'],'jpeg'))
             <img class="image-thumbs" src="{{Storage::url($control['default'])}}">
@@ -47,6 +46,7 @@ $file_exists = (isset($control['default']) && !is_null($control['default']) && $
             <a href="{{Storage::url($control['default'])}}" target="_blank">View File</a>
         @endif
     @endif
+    <input type="file" id="{{$name.$control['id']}}" name="{{$name}}" class="input-file"/>
     <label for="{{$name.$control['id']}}" class="btn btn-file js-labelFile">
         <i class="icon fa fa-check"></i>
         <span class="js-fileName">Change file</span>
