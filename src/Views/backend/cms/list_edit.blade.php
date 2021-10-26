@@ -130,7 +130,7 @@
                 data: data,
                 config: {headers: {'Content-Type': 'multipart/form-data'}}
             }).then(function (resp) {
-                success('Data saved!', 0);
+                success('Data saved!', true);
                 $(".loader-container").hide();
             }).catch(function (error) {
                 error_warning("Please check all the required field(s)", 0);
