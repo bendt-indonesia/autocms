@@ -40,7 +40,7 @@ $file_exists = (isset($control['default']) && !is_null($control['default']) && $
     </select>
 @elseif(isset($control['type']) && $control['type'] == 'file')
     @if($file_exists)
-        @if(endsWith($control['default'],'jpg') || endsWith($control['default'],'png') || endsWith($control['default'],'jpeg'))
+        @if(endsWith($control['default'],'jpg') || endsWith($control['default'],'png') || endsWith($control['default'],'jpeg') || endsWith($control['default'],'svg') || endsWith($control['default'],'HEIC') || endsWith($control['default'],'gif') || endsWith($control['default'],'webp'))
             <img class="image-thumbs" src="{{Storage::url($control['default'])}}">
         @else
             <a href="{{Storage::url($control['default'])}}" target="_blank">View File</a>
