@@ -267,7 +267,7 @@ class PageListService
                 $row->content = ImageService::generateFilename($files[$row->locale][$row->name], '/cms/', $file_name);
                 ImageService::save($files[$row->locale][$row->name], '/cms/', $file_name);
                 $row->save();
-            } else if (array_key_exists($row->name,$input[$row->locale])) {
+            } else if (isset($input[$row->locale]) && array_key_exists($row->name,$input[$row->locale])) {
                 $row->content = $input[$row->locale][$row->name];
                 $row->save();
             }
