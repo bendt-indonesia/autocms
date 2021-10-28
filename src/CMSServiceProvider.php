@@ -33,6 +33,8 @@ class CMSServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         $this->publishes([
+
+            __DIR__.'/config/bendt-cms.php' => config_path('bendt-cms.php'),
             __DIR__.'/Views/backend/cms/config.blade.php' => resource_path('views/backend/cms/config.blade.php'),
             __DIR__.'/Assets' => public_path('static'),
         ], 'views');
@@ -47,7 +49,10 @@ class CMSServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/Views', 'autocms');
 
         //Load routes
-        require __DIR__ . '/routes/autocms.php';
+        //Require Routes if not disabled
+        if(!config('bendt-cms.routes_disabled', false)) {
+            require __DIR__ . '/routes/autocms.php';
+        }
         require __DIR__ . '/helper.php';
     }
 
