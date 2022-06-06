@@ -86,11 +86,11 @@ class PageListService
                 }
                 $model->save();
             } else {
-                $model = new PageListElement();
-                $model->name = $el->name;
+                $data = $el->toArray();
+                unset($data['id'],$data['page_list_id'],$data['created_at'],$data['updated_at'],$data['sort_no']);
+                $model = new PageListElement($data);
                 $model->page_list_detail_id = $detail_id;
                 $model->locale = $locale;
-                $model->rules = $el->rules;
                 $model->save();
             }
         }
